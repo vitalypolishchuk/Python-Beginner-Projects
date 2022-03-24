@@ -48,7 +48,7 @@ def tic_tac_toe():
 				
 				turn_player_2 = True # if no winners, and no tie, then switch to player 2
 
-			if turn_player_2 == True:
+			if turn_player_2 == True: # player 2 turn
 				position = position_choice.position_choice(board) # returns position from 1 to 9
 				place_marker.place_marker(board,position,player_marker2) # place marker on the board
 
