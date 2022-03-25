@@ -7,7 +7,6 @@ def tic_tac_toe():
 		back = back_end.Back_End()
 		letter = 'X'
 		player_or_computer = back.play_with()
-		print(player_or_computer)
 
 		while game_on == True:
 			if letter == 'X':
@@ -22,6 +21,7 @@ def tic_tac_toe():
 
 				if back.winner_check(letter) == True:
 					back.print_board()
+					back.current_winner(letter)
 					print('Player {} won the game!'.format(letter))
 					break
 				if len(back.available_spaces()) > 0:
@@ -44,6 +44,7 @@ def tic_tac_toe():
 				if back.winner_check(letter) == True:
 					back.print_board()
 					print('Player {} won the game!'.format(letter))
+					back.current_winner(letter)
 					break
 				if len(back.available_spaces()) > 0:
 					letter = 'X'

@@ -4,6 +4,7 @@ class Back_End:
 
 	def __init__(self):
 		self.board = ['#','1','2','3','4','5','6','7','8','9']
+		self.current_winner = None
 
 	def print_board(self):
 			print(' | '.join(self.board[1:4]) + '\n'
@@ -49,22 +50,34 @@ class Back_End:
 					self.board[position] = letter
 
 	def computer_move(self,game,letter):
-		number = False
-		while not number:
-			number = random.randint(1,9)
+		if len(game.available_spaces) > 7:
+			number = random.choice(game.available_spaces())
+			self.board[number] = letter
+		else:
+			# get the square based off the minimax algorithm
+			square = game.minimax(game,letter)
+		return square
 
-			if number not in game.available_spaces():
-				number = False
-		self.board[number] = letter
-		#
+	def minimax(self,state,letter):
+		max_player = letter # yourself
+		other_player = 'O' if letter == 'X' else 'X' # the other player
+
+		# check if the previous move is a winner
+		if state.current_winner == max_player:
+			return {'position': None,
+					'score': 1 * (len(available_spaces)+1) if other_player == max_player else 
+						-1 * (len(available_spaces)+1)
+					}
+		elif available_spaces == []: # not empty squares
+			return {position: None, 'score': 0}
 
 	def winner_check(self,letter):
-		if (self.board[1:4] == [letter,letter,letter] or
-			self.board[4:7] == [letter,letter,letter] or
-			self.board[7:10] == [letter,letter,letter] or
-			self.board[1:8:3] == [letter,letter,letter] or
-			self.board[2:9:3] == [letter,letter,letter] or
-			self.board[3:10:3] == [letter,letter,letter] or
-			self.board[1:10:4] == [letter,letter,letter] or
-			self.board[3:8:2] == [letter,letter,letter]):
+		if (self.board[1:4] == [letter]*3 or
+			self.board[4:7] == [letter]*3 or
+			self.board[7:10] == [letter]*3 or
+			self.board[1:8:3] == [letter]*3 or
+			self.board[2:9:3] == [letter]*3 or
+			self.board[3:10:3] == [letter]*3 or
+			self.board[1:10:4] == [letter]*3 or
+			self.board[3:8:2] == [letter]*3):
 			return True
