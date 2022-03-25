@@ -1,7 +1,0 @@
-1. Print the board
-2. Take Player's input
-3. Place the letter
-4. Check for winner
-5. Check for tie
-
-Repeat
