@@ -34,7 +34,7 @@ class Back_End:
 				print("Wrong Input! Please enter 'P' for player or 'C' for computer")
 				comp_or_player = '#'
 
-	def player_input(self,game,letter):
+	def player_input(self,letter):
 		position = False
 		while not position:
 			try:
@@ -42,18 +42,18 @@ class Back_End:
 			except ValueError:
 				print('Wrong Input! Please try again!')
 			else:
-				if position not in game.available_spaces():
+				if position not in self.available_spaces():
 					print('Current position is taken! Choose another one!')
 					position = False
 				else:
 					self.board[position] = letter
 
-	def computer_move(self,game,letter):
+	def computer_move(self,letter):
 		number = False
 		while not number:
 			number = random.randint(1,9)
 
-			if number not in game.available_spaces():
+			if number not in self.available_spaces():
 				number = False
 		self.board[number] = letter
 
