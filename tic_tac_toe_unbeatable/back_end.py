@@ -52,7 +52,6 @@ class Back_End:
 					self.board[position] = letter
 
 	def computer_move(self,letter):
-		save_board = []
 
 		if len(self.available_spaces()) > 7:
 			square = random.choice(self.available_spaces())
