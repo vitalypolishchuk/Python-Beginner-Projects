@@ -22,6 +22,7 @@ def tic_tac_toe():
 				if back.winner_check(letter) == True:
 					back.print_board()
 					print('Player {} won the game!'.format(letter))
+					back.current_winner = letter
 					break
 				if len(back.available_spaces()) > 0:
 					letter = 'O'
@@ -43,6 +44,7 @@ def tic_tac_toe():
 				if back.winner_check(letter) == True:
 					back.print_board()
 					print('Player {} won the game!'.format(letter))
+					back.current_winner = letter
 					break
 				if len(back.available_spaces()) > 0:
 					letter = 'X'
