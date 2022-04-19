@@ -58,6 +58,8 @@ class Account:
 			return False
 		return True
 
+	#
+
 # ******************************************
 # category = Account('Category') -> to create a category
 # category.deposit(amount,'description') -> to deposit the money
