@@ -16,10 +16,12 @@ def time_roll_dice(rolls):
 def roll_dice():
 	# generate how many times the dice will be rolled
 	rolls = random.randint(15,20)
+	# we keep track of previous and current roll so that current roll 
+	# would not be the same as the previous one
 	previous_roll = 0
 	current_roll = 0
 	while rolls > 1:
-			# show dice is a dictionary: where keys are the numbers from 1 to 6
+			# show_dice is a dictionary: where keys are the numbers from 1 to 6
 			# and values are the visual represantations of the dice
 			current_roll = show_dice[random.randint(1,6)]
 			while current_roll == previous_roll:
