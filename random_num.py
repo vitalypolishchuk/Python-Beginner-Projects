@@ -1,13 +1,14 @@
 import random # generate a secret number
+import time
 
 def generate_num():
 	ask = 0
 
-	while ask < 1:
+	while ask < 1 or ask > 100:
 		ask = int(input('Please enter a number from 1 to 100: '))
 
-		if ask < 1:
-			print('Cannot be less than 1!')
+		if ask < 1 or ask > 100:
+			pass
 		else:
 			return ask
 
@@ -24,10 +25,12 @@ def comp_guess(ask):
 		if num < ask:
 			low = num+1
 			print(f'Generating number {num}. Too Low! Setting boundaries from {low} to {high}')
+			time.sleep(0.5)
 
 		if num > ask:
 			high = num-1
 			print(f'Generating number {num}. Too High! Setting boundaries from {low} to {high}')
+			time.sleep(0.5)
 
 	print(f'Your number is {num}! I guessed at the {index_count} attempt!')
 
